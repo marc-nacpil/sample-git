@@ -1,1 +1,115 @@
-<p>home works!</p>
+<div class="min-h-screen bg-white">
+  <!-- Header -->
+  <header class="px-6 py-4 border-b border-gray-100">
+    <nav class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="text-2xl font-bold text-gray-900">Home</div>
+      <div class="hidden md:flex items-center space-x-8">
+        <a 
+          *ngFor="let item of navItems" 
+          [href]="item.href"
+          class="text-gray-600 hover:text-gray-900 transition-colors cursor-pointer"
+          (click)="scrollToSection(item.href.substring(1))"
+        >
+          {{ item.label }}
+        </a>
+      </div>
+      <button 
+        class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+        (click)="onGetStarted()"
+        routerLink="forecast"
+      >
+        Get Started
+      </button>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="px-6 py-20 bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div class="max-w-6xl mx-auto text-center">
+      <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+        Welcome to Your
+        <span class="text-blue-600"> Perfect Home</span>
+      </h1>
+      <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+        Discover the ultimate living experience with our modern, comfortable, and beautifully designed homes that fit your lifestyle.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button 
+          class="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-all transform hover:scale-105 flex items-center justify-center gap-2"
+          (click)="onExploreHomes()"
+        >
+          Explore Homes
+          <span class="ml-2">→</span>
+        </button>
+        <button 
+          class="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg hover:border-gray-400 transition-colors"
+          (click)="onLearnMore()"
+        >
+          Learn More
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="px-6 py-20">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">Why Choose Us</h2>
+        <p class="text-xl text-gray-600">Experience the difference with our premium features</p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div 
+          *ngFor="let feature of features; trackBy: trackByFeatureId"
+          class="text-center p-8 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors"
+        >
+          <div [class]="'w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 ' + feature.bgColor">
+            <span class="text-3xl">{{ feature.icon }}</span>
+          </div>
+          <h3 class="text-2xl font-semibold text-gray-900 mb-4">{{ feature.title }}</h3>
+          <p class="text-gray-600">{{ feature.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="px-6 py-20 bg-gray-900 text-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-6">Ready to Find Your Dream Home?</h2>
+      <p class="text-xl text-gray-300 mb-8">
+        Take the first step towards your perfect living space. Our team is here to guide you every step of the way.
+      </p>
+      <button 
+        class="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-all transform hover:scale-105 text-lg font-semibold"
+        (click)="onStartJourney()"
+      >
+        Start Your Journey
+      </button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="px-6 py-12 border-t border-gray-200">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <div class="text-2xl font-bold text-gray-900 mb-4">Home</div>
+          <p class="text-gray-600">Creating beautiful living spaces for modern families.</p>
+        </div>
+        <div *ngFor="let section of footerSections">
+          <h3 class="font-semibold text-gray-900 mb-4">{{ section.title }}</h3>
+          <div class="space-y-2 text-gray-600">
+            <div *ngFor="let link of section.links" class="cursor-pointer hover:text-gray-900 transition-colors">
+              {{ link }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-200 pt-8 text-center text-gray-600">
+        <p>&copy; 2025 Home. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</div>
